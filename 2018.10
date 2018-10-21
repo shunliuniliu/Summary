@@ -1,0 +1,208 @@
+1. 两个栈实现一个队列
+2. 两个队列实现一个栈
+3. 给一个随机数生成函数，计算出圆周率
+
+
+Stack or Queue
+
+1.
+
+push
+pop
+size
+
+queueu
+#
+def dequeue():
+     if stack2.size() != 0:
+           return stack2.pop()
+     elif stack1.size() != 0:
+           while stack1.size() != 0:
+                 stack2.push(stack1.pop())
+           return stack2.pop()
+    else:
+          return None
+
+def enqueue(e):
+    if stack1:
+         stack1.push(e)
+    else:
+        while stack2:
+             stack1.push(stack2.pop())
+        stack1.push(e)
+
+def enqueue_improved(e):
+         stack1.push(e)
+def dequeue_improved():
+     if stack2.size() != 0:
+           return stack2.pop()
+     else stack1.size() != 0:
+           while stack1.size() != 0:
+                stack2.push(stack1.pop())
+            return stack2.pop()
+    elif:
+          return None
+
+2.
+
+
+
+3.
+选取面积大小为1的正方形，内切圆面积是Pi/4
+投m次点，即调用m次随机数api
+统计落在落在内切圆中的点的数量为n
+
+n/m = Pi/4， 故Pi = 4*n/m
+
+假定有randdom这个api
+以（1，1）为圆心，（圆心可以任意）
+def calculatePi(m)
+       n = 0
+       for i in range(m):
+            x = randdom()
+            y = randdom()
+       dis = (x-1)**2 + (y-1)**2
+     
+       if dis <= 1.0:
+            n += 1
+      
+       return 4.0*n/m
+
+
+
+
+完善的写法：
+1.
+#
+# 两个栈实现一个队列
+class Queue(object):
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+
+    #入队
+    def enqueue(self,element):
+        if self.stack1:
+            self.stack1.append(element)
+        else:
+            while self.stack2:
+                self.stack1.append(self.stack2.pop())
+            self.stack1.append(element)
+
+    #倒栈的操作没必要在入队的时候，应该在出队的时候做，这样可以减少一次倒栈的操作
+    # 所以入队的时间复杂度是O(1)
+    def enqueue_improved(self,element):
+        self.stack1.append(element)
+
+    #出队
+
+    def dequeue (self):
+        if self.stack2:
+            return self.stack2.pop()
+        elif self.stack1:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
+            return self.stack2.pop()
+        else:
+            return None
+
+if __name__=='__main__':
+    #总体的平均时间复杂度是O(1)
+    queue = Queue()
+    queue.enqueue_improved('9')
+    queue.enqueue_improved('10')
+    queue.enqueue_improved('6')
+    queue.enqueue_improved('2')
+
+    print(queue.dequeue())
+    print(queue.dequeue())
+    print(queue.dequeue())
+    print(queue.dequeue())
+
+
+
+
+'''
+class QueueWithTwoStacks(object):
+    def __init__(self):
+        self._stack1 = []
+        self._stack2 = []
+
+    def appendTail(self,x):
+        self._stack1.append(x)
+
+    def deleteHead(self):
+         if self._stack2:
+             return self._stack2.pop()
+         else:
+             if self._stack1:
+                while self._stack1:
+                    self._stack2.append(self._stack1.pop())
+                return self._stack2.pop()
+             else:
+                 return None
+'''
+
+
+
+
+
+2.
+'''
+两个队列实现一个栈
+#思路一：
+1、进栈：先把元素push进空的队列，如果两者都是空的，则随意。
+2、在把另一个非空的队列里面的元素一个个按顺序拿出来，push到前者中。
+3、这样就变成后者是空的了，可以用来装下一个进栈的元素。
+4、出栈：直接将那个非空的队列里面的元素front()出来再pop()掉就可以。
+
+思路二：
+1、进栈：把元素push进非空的队列，如果两者都是空的，则随意。
+2、出栈：把非空队列里面的前n-1个元素push到空队列里面，再把最后一个元素拿出来即可。
+3、循环以上步骤，即可得到实现目的。
+分析：虽然两个思路在理论上都行得通，但是第一个思路的时间复杂度太高，实现效率不高，所以下面贴出来的是第二个思路的代码：
+
+'''
+# 两个栈实现一个队列
+class StackWithTwoQueues(object):
+    def __init__(self):
+        self._stack1 = []
+        self._stack2 = []
+
+    def push(self,x):
+        if len(self._stack1) == 0:
+            self._stack1.append(x)
+        elif len(self._stack2) == 0:
+            self._stack2.append(x)
+        if len(self._stack2) == 1 and len(self._stack1) >= 1:
+            while self._stack1:
+                self._stack2.append(self._stack1.pop(0))
+        elif len(self._stack1) == 1 and len(self._stack2) > 1:
+            while self._stack2:
+                self._stack1.append(self._stack2.pop(0))
+
+    def pop(self):
+        if self._stack1:
+            return self._stack1.pop(0)
+        elif self._stack2:
+            return self._stack2.pop(0)
+        else:
+            return None
+
+if __name__=='__main__':
+
+    queue = StackWithTwoQueues()
+    queue.push('9')
+    queue.push('10')
+    queue.push('6')
+    queue.push('2')
+
+    print(queue.pop())
+    print(queue.pop())
+    print(queue.pop())
+    print(queue.pop())
+
+
+
+
+
