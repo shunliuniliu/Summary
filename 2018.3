@@ -1,0 +1,158 @@
+// 我们使用一个权重来衡量一个十进制数： 一个十进制数用二进制数表示后，这个二进制数中1的个数表示这个数。我们管这个权重叫 w(n)
+// 现在我们给定一个数字 N, 实现一个方法，返回一个数字 X，要求 X 为满足 w(X) == w(N) 的最小的正整数。
+
+def my_function(N):
+    # the initial number of "1", the default is 0
+    cnt = 0
+    
+    while N:
+        if N&1 == 1:
+            cnt += 1
+            
+        N = N >> 1
+    
+    # until now, we get the number of "1" in N
+    
+    X = 2**cnt - 1
+    
+    return X
+    
+    
+        
+        
+
+
+// 给两个代表日期的字符串， 形如 "20170203"
+// 实现一个方法，给出这两个日期间隔的天数，同样，语言不限，不要直接使用 datetime 库。bbu sb
+#思路1：
+#“20170203”可以用切片，分到一个list或者元组中。 ["2017","02","03"]
+#同理 另一个日期也这样操作
+
+first_date_string = "20170203"
+year_1 = int(first_date_string[0:4)
+month_1 = int(first_date_string[4:6])
+day_1 = int(first_date_string[6:8])
+
+second_date_string = "20180510"
+year_2 = int(second_date_string[0:4])
+month_2 = int(second_date_string[4:6])
+day_2 = int(second_date_string[6:8])
+
+#然后 先从year开始，依次为month、day
+
+#year的处理分为平年和闰年
+#month的处理分为 30天 31天 还有二月在平年28天、闰年是29天。 
+#
+if year_1 > year_2:
+    if month_1 > month_2:
+    
+else:
+
+
+#上面的思路不对
+#重新写
+
+def is_run(year):
+    return (year%4==0 and year%100!=0) or (year%400 == 0)
+
+    
+
+def my_function():
+    #在这个里面存的是平年和闰年的每月的天数
+    month = [[0,0], [31,31], [28,29], [31,31], [30,30], [31,31],[30,30], [31,31],[31,31],[30,30], [31,31], [30,30], [31,31]]
+
+     first_date_string = "20170203"
+     int time1 = int(first_date_string)
+ 
+     second_date_string = "20180510"
+     int time2 = int(second_date_string)
+     
+     if time1 > time2:
+        int temp  = time1
+        time1 = time2
+        time2 = temp
+   
+    
+    #这里可以用切片，也可以用int型整数通过/1000，%10000/100等计算
+    year_1 = int(first_date_string[0:4)
+    month_1 = int(first_date_string[4:6])
+    day_1 = int(first_date_string[6:8])
+ 
+
+    year_2 = int(second_date_string[0:4])
+    month_2 = int(second_date_string[4:6])
+    day_2 = int(second_date_string[6:8])
+    
+    result = 1
+    
+    while year_1 < year_2 or month_1 < month_2 or day_1 < day_2:
+        day_1 += 1
+        
+        if day_1 == month[month1][is_run(year_1)] + 1:
+            month_1 += 1
+            day_1 = 1
+            
+        #月份达到12个月
+        if month_1 == 13: 
+           year_1 += 1
+           month_1 =1
+           
+        result += 1
+        
+    return result
+        
+
+
+/* 单词计算wordcount */
+
+val input = Source.fromFile("E:/test.txt").getLines.toArray
+
+val wc = sc.parallelize(input)       /* spark单机读取数据 */
+.flatMap(_.split(" "))               /* 拆分数据，以空格为拆分条件 */
+.map((_,1))                          /* 将拆分的每个数据为K，自己创建个1为V */
+.reduceByKey(_+_)                    /* 这里我喜欢叫分组 */
+.foreach(println)                    /* 输出 */
+1
+
+
+
+/* 词频排序topk */
+
+val input = Source.fromFile("E:/test.txt").getLines.toArray
+
+val topk = sc.parallelize(input)     /* spark单机读取数据 */
+.flatMap(_.split(" "))               /* 拆分数据，以空格为拆分条件 */
+.map((_, 1))                         /* 将拆分的每个数据为K，自己创建个1为V */
+.reduceByKey(_+_)                    /* 这里我喜欢叫分组 */
+.sortBy(_._2,false)                  /* 根据分组后数据第2位数据进行排序 */
+.take(5)                             /* 只取前5位 */
+.foreach(println)                    /* 输出 */
+
+
+
+单词统计        
+// 用spark进行map reduce的方法
+    
+//计算单词次数，默认是空格区分
+val input = Source.fromFile("example.txt").getLines.toArray
+
+val wc = sc.parallelize(input)      
+.flatMap(_.split(" "))               
+.map((_,1))                          
+.reduceByKey(_+_)                  
+.foreach(println) 
+    
+
+//tok5 进行排序
+val input = Source.fromFile("example.txt").getLines.toArray
+
+val top5 = sc.parallelize(input)     
+.flatMap(_.split(" "))              
+.map((_, 1))                        
+.reduceByKey(_+_)                   
+.sortBy(_._2,false)                 
+.take(5)                             //取出前五位
+.foreach(println) 
+    
+    
+    
