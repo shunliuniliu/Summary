@@ -49,6 +49,15 @@ c/c++的一些基本知识，还有就是数学知识，比如概率论，一些
 （1）写SQL语句，选出所有课程都大于80分的学生的姓名
 （用一条SQL 语句，查询出每门课都大于80分的学生姓名）
 
+select distinct 姓名 from table where 姓名 not in (select distinct 姓名 from table where 分数<=80);
+
+select 姓名 from table group by 姓名 having min(分数)>80;
+
+select 姓名 from table group by 姓名 having min(分数)>80 and count(课程)>3;
+
+select 姓名 from table group by 姓名 having count(分数)=sum(case when score>80 then 1 else 0 end);
+
+
 | 自动编号 | 学号 | 姓名 | 课程 | 分数 |
 | ------ | ------ | ------ | ------ | ------ |
 | 1 | 2005001 | 张三 | 语文 | 79 |
@@ -58,6 +67,7 @@ c/c++的一些基本知识，还有就是数学知识，比如概率论，一些
 | 5 | 2005003 | 王五 | 英文 | 70 |
 
 （2）删除除了自动编号不同, 其他都相同的学生冗余信息
+delete table where 自动编号 not in (select 自动编号 from table group by 学号,姓名,课程,分数);
 
 
 2. [1, 2, 5, 10, 20, 50, 100]，从数组中取若干个数字，使得和为100，请问一共有多少种取法？
