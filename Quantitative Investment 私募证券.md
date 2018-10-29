@@ -67,6 +67,7 @@ select 姓名 from table group by 姓名 having count(分数)=sum(case when scor
 | 5 | 2005003 | 王五 | 英文 | 70 |
 
 （2）删除除了自动编号不同, 其他都相同的学生冗余信息
+
 delete table where 自动编号 not in (select 自动编号 from table group by 学号,姓名,课程,分数);
 
 
