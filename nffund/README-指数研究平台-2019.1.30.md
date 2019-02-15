@@ -2,7 +2,7 @@
 
 项目链接：
 
-个人百度云网盘链接:https://pan.baidu.com/s/1CnaFdT5lmwBkXEkBkB8U0A  密码:skj0
+个人百度云网盘链接:
 
 ## Requirements
 
