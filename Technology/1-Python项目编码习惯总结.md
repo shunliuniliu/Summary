@@ -135,11 +135,11 @@ root@Kali:~/python#
 
 ## 5. A类的一个方法中初始化B类实例对象，B类初始化入参含有A实例对象，则在A类的该方法传入self
 
-![Python项目编码习惯总结-Device类](/Users/zhangjinzhi/Documents/GitHub/Summary/images/Python项目编码习惯总结-Device类.png)
+![Python项目编码习惯总结-Device类](../images/Python项目编码习惯总结-Device类.png)
 
-![Python项目编码习惯总结-Plan类](/Users/zhangjinzhi/Documents/GitHub/Summary/images/Python项目编码习惯总结-Plan类.png)
+![Python项目编码习惯总结-Plan类](../images/Python项目编码习惯总结-Plan类.png)
 
-![Python项目编码习惯总结-Plan细节](/Users/zhangjinzhi/Documents/GitHub/Summary/images/Python项目编码习惯总结-Plan细节.png)
+![Python项目编码习惯总结-Plan细节](../images/Python项目编码习惯总结-Plan细节.png)
 
 
 
