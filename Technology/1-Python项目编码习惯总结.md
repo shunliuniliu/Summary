@@ -1,6 +1,6 @@
 # Python项目编码习惯
 
-## 1.Python 命令行参数和getopt模块
+## 1. Python 命令行参数和getopt模块
 
 官方文档：https://docs.python.org/3.1/library/getopt.html
 
@@ -98,7 +98,7 @@ root@Kali:~/python#
 
 
 
-## 3.如何优雅地import自己写的文件
+## 3. 如何优雅地import自己写的文件
 
 ### 以前的做法
 
@@ -118,5 +118,30 @@ root@Kali:~/python#
 
 ![如何优雅地import自己写的文件-正确做法](../images/如何优雅地import自己写的文件-正确做法.png)
 
-## 4.
+## 4. 类、类变量、实例变量、方法的命名风格
+
+保持一种特定的约定即可，比如PEP8
+
+
+
+实践中，可以采用以下约定：
+
+- 类采用驼峰法命名
+- 类变量采用驼峰法命名
+- 实例变量采用下划线法命名
+- 方法采用下划线法
+
+
+
+## 5. A类的一个方法中初始化B类实例对象，B类初始化入参含有A实例对象，则在A类的该方法传入self
+
+![Python项目编码习惯总结-Device类](/Users/zhangjinzhi/Documents/GitHub/Summary/images/Python项目编码习惯总结-Device类.png)
+
+![Python项目编码习惯总结-Plan类](/Users/zhangjinzhi/Documents/GitHub/Summary/images/Python项目编码习惯总结-Plan类.png)
+
+![Python项目编码习惯总结-Plan细节](/Users/zhangjinzhi/Documents/GitHub/Summary/images/Python项目编码习惯总结-Plan细节.png)
+
+
+
+
 
