@@ -145,3 +145,61 @@ root@Kali:~/python#
 
 
 
+## 6. 当项目中对类型的判断较多且严格时，采用types模块或者isinstance（object, classifo）函数
+
+#### types是什么：
+
+- types模块中包含python中各种常见的数据类型，如IntType(整型)，FloatType(浮点型)等等。
+
+```python
+>>> import types
+
+>>> dir(types)
+['BooleanType',
+ 'BufferType',
+ 'BuiltinFunctionType',
+ 'BuiltinMethodType',
+ 'ClassType',
+ 'CodeType',
+ 'ComplexType',
+ 'DictProxyType',
+ 'DictType',
+ 'DictionaryType',
+ 'EllipsisType',
+ 'FileType',
+ 'FloatType',
+ 'FrameType',
+ 'FunctionType',
+ 'GeneratorType',
+ 'GetSetDescriptorType',
+ 'InstanceType',
+ 'IntType',
+ 'LambdaType',
+ 'ListType',
+ 'LongType',
+ 'MemberDescriptorType',
+ 'MethodType',
+ 'ModuleType',
+ 'NoneType',
+ 'NotImplementedType',
+ 'ObjectType',
+ 'SliceType',
+ 'StringType',
+ 'StringTypes',
+ 'TracebackType',
+ 'TupleType',
+ 'TypeType',
+ 'UnboundMethodType',
+ 'UnicodeType',
+ 'XRangeType',
+ '__all__',
+ '__builtins__',
+ '__doc__',
+ '__file__',
+ '__name__',
+ '__package__']
+```
+
+### types的缺点
+
+如果是判断自定义类（该类继承基础类比如int），那个该自定义类的示例对象可能不是types.IntType. 所以推荐isinstance（object, classifo）函数来替代。
